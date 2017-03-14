@@ -1,0 +1,185 @@
+<link rel="import" href="../polymer/polymer.html">
+<script src="./d3.v3.min.js"></script>
+<script src="./dagre.js"></script>
+
+<!--
+`go-graph`
+graph
+
+@demo demo/index.html 
+-->
+
+<dom-module id="go-graph">
+  <template>
+    <style>
+       :host {
+        display: block;
+      }
+      
+      svg {
+        overflow: hidden;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+      }
+      
+      .node rect,
+      .node circle,
+      .node ellipse,
+      .node polygon {
+        stroke: #333;
+        fill: #fff;
+        stroke-width: 1.5px;
+      }
+      
+      text {
+        font-weight: 300;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+        font-size: 12px;
+      }
+      
+      .node rect {
+        stroke: #333;
+        fill: #fff;
+      }
+      
+      .edgePath path {
+        stroke: #333;
+        fill: #333;
+        stroke-width: 1.5px;
+      }
+      
+      .node text {
+        pointer-events: none;
+      }
+    </style>
+    <svg id="svg" width$="[[width]]" height$="[[height]]"></svg>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'go-graph',
+
+      properties: {
+        width: {
+          type: Number,
+          value: '900',
+          reflectToAttribute: true
+        },
+        height: {
+          type: Number,
+          value: '900',
+          reflectToAttribute: true
+        },
+        direction: {
+          type: String,
+          value: 'LR',
+          reflectToAttribute: true
+        },
+        data: {
+          type: Object
+        },
+        nodeTextMaxLength: {
+          type: Number,
+          value: 18
+        },
+        scale: {
+          type: Number,
+          value: 0.75
+        }
+      },
+
+      attached() {
+
+        this.scopeSubtree(this.$.svg, true);
+
+        this.g = new dagreD3.graphlib.Graph()
+          .setGraph({})
+          .setDefaultEdgeLabel(function () { return {}; });
+
+        this.g.graph().rankdir = this.direction;
+        this._generateGraph(this.data);
+
+      },
+
+      _render() {
+
+        var vm = this;
+
+        var render = new dagreD3.render();
+        var svg = d3.select(this.$.svg);
+        var inner = svg.append('g');
+        var zoom = d3.behavior.zoom().on('zoom', function () {
+          inner.attr('transform', 'translate(' + d3.event.translate + ')scale(' + d3.event.scale + ')');
+        });
+        svg.call(zoom);
+
+        render(inner, this.g);
+
+        inner.selectAll('g.node')
+          .attr('title', function (v) { return vm._styleTooltip(vm.g.node(v).id) })
+
+        zoom
+          .scale(this.scale)
+          .event(svg);
+        svg.attr('height', this.height * this.scale + 40);
+
+
+      },
+
+      _generateGraph(data) {
+        this._genNodLink(data);
+        this._render();
+      },
+
+      _genNodLink(data) {
+        this._generateNodes(data.nodes, false);
+        this._generateLinks(data.relations);
+      },
+
+      _generateNodes(nodes) {
+        for (var i = 0; i < nodes.length; i++) {
+          var name = this._getLabel(nodes[i].value);
+          this.g.setNode(nodes[i].id, { label: name, id: nodes[i].id });
+        }
+      },
+
+      _generateLinks(links) {
+        for (var i = 0; i < links.length; i++) {
+          this.g.setEdge(links[i].idFrom, links[i].idTo, { arrowhead: 'vee', lineInterpolate: 'basis' });
+        }
+      },
+
+
+      _styleTooltip(id) {
+        var description = this._getDescription(id);
+        var name = this._getLabel(description, true);
+        return "<p class='name'>" + name + "</p><p class='description'>" + description + "</p>";
+
+      },
+
+      _getDescription(id) {
+        var description = '';
+        this.data.nodes.forEach(function (node) {
+          if (node.id === id) {
+            description = node.value
+          }
+        }, this);
+
+        return description;
+      },
+
+      _getLabel(path, fullName) {
+        var result = path.split('/');
+        var name = result[result.length - 1];
+        if (!fullName && name.length > this.nodeTextMaxLength) {
+          return name.substring(0, (this.nodeTextMaxLength - 4)) + '...';
+        } else {
+          return name
+        }
+      }
+
+    });
+  </script>
+</dom-module>

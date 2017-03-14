@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>go-graph demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../go-graph.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic go-graph demo</h3>
+      <demo-snippet>
+        <template>
+          <go-graph data='{"nodes":[{"id":"AVho03WnaSjvOTa7Ptjy","value":"//10.200.1.55:9000/tmp/parquet/input/sales11.parquet/part-r-00000-0a8a657c-3111-438a-a6ab-9586fd30e45a.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho03wUaSjvOTa7Ptj2","value":"//10.200.1.55:9000/tmp/parquet/input/sales21.parquet/part-r-00000-0a861e0b-3045-40db-9417-0fa0470d7b25.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho06t7aSjvOTa7PttR","value":"//10.200.1.55:9000/tmp/parquet/input/sales21.parquet/part-r-00000-0a861e0b-3045-40db-9417-0fa0470d7b25.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho03wUaSjvOTa7Ptjz","value":"//10.200.1.55:9000/tmp/parquet/input/sales11.parquet/part-r-00000-0a8a657c-3111-438a-a6ab-9586fd30e45a.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho03wUaSjvOTa7Ptj1","value":"//10.200.1.55:9000/tmp/parquet/input/sales21.parquet/part-r-00001-0a861e0b-3045-40db-9417-0fa0470d7b25.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho06t7aSjvOTa7PttP","value":"//10.200.1.55:9000/tmp/parquet/input/sales11.parquet/part-r-00000-0a8a657c-3111-438a-a6ab-9586fd30e45a.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho06t7aSjvOTa7PttQ","value":"//10.200.1.55:9000/tmp/parquet/input/sales11.parquet/part-r-00001-0a8a657c-3111-438a-a6ab-9586fd30e45a.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho06t7aSjvOTa7PttS","value":"//10.200.1.55:9000/tmp/parquet/input/sales21.parquet/part-r-00001-0a861e0b-3045-40db-9417-0fa0470d7b25.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho03wUaSjvOTa7Ptj0","value":"//10.200.1.55:9000/tmp/parquet/input/sales11.parquet/part-r-00001-0a8a657c-3111-438a-a6ab-9586fd30e45a.snappy.parquet,","_type":"INPUT_FILE"},{"id":"AVho06HLaSjvOTa7PtnA","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000000/part-r-00000-258a1084-7681-43ee-bd84-d7631b844fef.snappy.parquet","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7PtnR","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000009","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7PtnV","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000011","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7Ptnb","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000014","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7Ptnf","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000016","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7Ptnm","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000019/part-r-00019-258a1084-7681-43ee-bd84-d7631b844fef.snappy.parquet","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7Ptnq","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000021/part-r-00021-258a1084-7681-43ee-bd84-d7631b844fef.snappy.parquet","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7Ptnv","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000024","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7Ptn2","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000027/part-r-00027-258a1084-7681-43ee-bd84-d7631b844fef.snappy.parquet","_type":"OUTPUT_FILE"},{"id":"AVho06HLaSjvOTa7Ptn3","value":"//10.200.1.55:9000/tmp/parquet/output5/east.parquet/_temporary/0/task_201611151730_0004_m_000028","_type":"OUTPUT_FILE"},{"id":"app_1","value":"PoC Application","_type":"APPLICATION"}],"relations":[{"idFrom":"AVho03WnaSjvOTa7Ptjy","idTo":"app_1"},{"idFrom":"AVho03wUaSjvOTa7Ptj2","idTo":"app_1"},{"idFrom":"AVho06t7aSjvOTa7PttR","idTo":"app_1"},{"idFrom":"AVho03wUaSjvOTa7Ptjz","idTo":"app_1"},{"idFrom":"AVho03wUaSjvOTa7Ptj1","idTo":"app_1"},{"idFrom":"AVho06t7aSjvOTa7PttP","idTo":"app_1"},{"idFrom":"AVho06t7aSjvOTa7PttQ","idTo":"app_1"},{"idFrom":"AVho06t7aSjvOTa7PttS","idTo":"app_1"},{"idFrom":"AVho03wUaSjvOTa7Ptj0","idTo":"app_1"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7PtnA"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7PtnR"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7PtnV"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7Ptnb"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7Ptnf"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7Ptnm"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7Ptnq"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7Ptnv"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7Ptn2"},{"idFrom":"app_1","idTo":"AVho06HLaSjvOTa7Ptn3"}]}'></go-graph>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

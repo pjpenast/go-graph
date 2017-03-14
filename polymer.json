@@ -1,0 +1,26 @@
+{
+  "lint": {
+    "rules": [
+      "polymer-2-hybrid"
+    ]
+  },
+  "entrypoint": "index.html",
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/webcomponents-lite.js"
+  ],
+  "builds": [
+    {
+      "name": "bundled",
+      "bundle": true,
+      "js": {
+        "minify": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      }
+    }
+  ]
+}
