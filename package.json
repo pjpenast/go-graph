@@ -1,0 +1,28 @@
+{
+  "name": "go-graph",
+  "version": "0.0.1",
+  "description": "graph",
+  "main": "d3.v3.min.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "page": "node bin/publish.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjpenast/go-graph.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pjpenast/go-graph/issues"
+  },
+  "homepage": "https://github.com/pjpenast/go-graph#readme",
+  "devDependencies": {
+    "co": "^4.6.0",
+    "co-exec": "^1.1.0",
+    "fs-extra": "^2.0.0"
+  }
+}

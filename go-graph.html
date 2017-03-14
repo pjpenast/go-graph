@@ -78,7 +78,9 @@ graph
           reflectToAttribute: true
         },
         data: {
-          type: Object
+          type: Object,
+          reflectToAttribute: true,
+          observer: '_dataChanged'
         },
         nodeTextMaxLength: {
           type: Number,
@@ -90,6 +92,11 @@ graph
         }
       },
 
+      _dataChanged(newValues, oldValues) {
+        if (this.data && this.g)
+        this._generateGraph(this.data);
+      },
+
       attached() {
 
         this.scopeSubtree(this.$.svg, true);
@@ -99,8 +106,18 @@ graph
           .setDefaultEdgeLabel(function () { return {}; });
 
         this.g.graph().rankdir = this.direction;
-        this._generateGraph(this.data);
 
+        if (this.data)
+          this._generateGraph(this.data);
+
+      },
+
+      attributeChanged(name, type) {
+
+        if (name === 'data') {
+          if (this.data)
+          this._generateGraph(this.data);
+        }
       },
 
       _render() {
